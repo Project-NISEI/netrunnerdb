@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @legality_type.name %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @legality_type.code %>
+</p>
+
+<%= link_to 'Edit', edit_legality_type_path(@legality_type) %> |
+<%= link_to 'Back', legality_types_path %>

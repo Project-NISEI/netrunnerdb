@@ -1,0 +1,13 @@
+<% provide(:title, 'Cycles') %>
+
+<table class="rwd-table table table-striped table-condensed">
+   <thead>
+      <tr>
+         <th>Name</th>
+         <th>Description</th>
+      </tr>
+   </thead>
+   <%= render @nr_cycles %>
+</table>
+
+<%= link_to 'New cycle', new_nr_cycle_path %>

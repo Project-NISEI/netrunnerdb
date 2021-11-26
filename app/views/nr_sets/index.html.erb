@@ -1,0 +1,15 @@
+<% provide(:title, 'Sets') %>
+
+<table class="rwd-table table table-striped table-condensed">
+   <thead>
+      <tr>
+         <th>Name</th>
+         <th>Size</th>
+         <th>Release Date</th>
+         <th>Type</th>
+      </tr>
+   </thead>
+   <%= render @nr_sets %>
+</table>
+
+<%= link_to 'New Set', new_nr_set_path %>

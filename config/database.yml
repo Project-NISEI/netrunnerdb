@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  host: db
+  username: nrdb
+  password: nrdb
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+development:
+  <<: *default
+  database: db/development
+
+test:
+  <<: *default
+  database: db/test
+
+production:
+  <<: *default
+  database: netrunnerdb_production
+  username: netrunnerdb
+  password: <%= ENV['NETRUNNERDB_DATABASE_PASSWORD'] %>

@@ -1,0 +1,26 @@
+<tr class="<%= cycle('odd', 'even') -%>">
+   <td data-th="Title">
+      <%= link_to printing_path(printing.nr_set.code, printing.position, printing.card.code) do %>
+         <%= printing.card.name %>
+      <% end %>
+   </td>
+   <td data-th="Faction">
+      <span class="icon icon-<%= printing.card.faction.code.dasherize %>"></span>
+   </td>
+   <td data-th="Cost">
+      <%= printing.card.cost %>
+   </td>
+   <td data-th="Type">
+      <%= raw printing.card.type_builder %>
+   </td>
+   <td data-th="&hellip;">
+      <%= raw printing.card.strength_selector %>
+   </td>
+   <td data-th="Influence">
+      <%= raw printing.card.influence_builder %>
+   </td>
+   <td data-th="Set">
+      <span class="icon icon-<%= printing.nr_set.nr_cycle&.code %>"></span>
+      <%= "#{printing.nr_set.name} #{printing.position}" %>
+   </td>
+</tr>

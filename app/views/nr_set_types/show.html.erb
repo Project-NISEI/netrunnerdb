@@ -1,0 +1,13 @@
+<p>
+  <strong>Name:</strong>
+  <%= @nr_set_type.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @nr_set_type.description %>
+</p>
+
+<%= link_to 'New', new_nr_set_type_path %> |
+<%= link_to 'Edit', edit_nr_set_type_path(@nr_set_type) %> |
+<%= link_to 'Back', nr_set_types_path %>

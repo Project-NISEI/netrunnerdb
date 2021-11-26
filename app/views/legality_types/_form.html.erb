@@ -1,0 +1,27 @@
+<%= form_with(model: legality_type, local: true) do |form| %>
+  <% if legality_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(legality_type.errors.count, "error") %> prohibited this legality_type from being saved:</h2>
+
+      <ul>
+      <% legality_type.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_area :name, id: :legality_type_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :code %>
+    <%= form.text_area :code, id: :legality_type_code %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,50 @@
+<div class="col-sm-7">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title card-title">
+        <% if @card.uniqueness %>
+          &diams;
+        <% end %>
+        <%= link_to @card.name, card_path(@card.code) %>
+      </h3>
+    </div>
+    <div class="panel-body">
+      <div>
+        <div class="card-info">
+          <span class="card-type">
+            <%= @card.type_builder -%>
+          </span>
+          <%= raw(" &bull; ") + "Adv: #{@card.advancement_requirement}" if @card.advancement_requirement.present? -%>
+          <%= raw(" &bull; ") + "Score: #{@card.agenda_points}" if @card.agenda_points.present? -%>
+          <%= raw(" &bull; ") + "Cost: #{@card.cost}" if @card.cost.present? -%>
+          <%= raw(" &bull; ") + "Strength: #{@card.strength}" if @card.strength.present? -%>
+          <%= raw(" &bull; ") + "Trash: #{@card.trash_cost}" if @card.trash_cost.present? -%>
+          <%= raw(" &bull; ") + "Influence: #{@card.influence_cost}" if @card.influence_cost.present? -%>
+          <%= raw(" &bull; ") + "Link: #{@card.base_link}" if @card.base_link.present? -%>
+          <%= raw(" &bull; ") + "Deck: #{@card.minimum_deck_size}" if @card.minimum_deck_size.present? -%>
+          <%= raw(" &bull; ") + "Influence: #{@card.influence_limit || raw("&#8734;")}" if @card.influence_limit.present? -%>
+        </div>
+
+        <div class="card-text border-<%= @card.faction.code %>">
+          <%= raw @card.text %>
+        </div>
+
+        <div>
+          <%= @card.versions %>
+        </div>
+
+        <%# <div class="card-illustrator"> %>
+        <%#   <small> %>
+        <%#     <%= card.faction_name %1> %>
+        <%#     <%= raw(" &bull; ") + "#{@card.illustrator}" if @card.illustrator.present? %1> %>
+        <%#     &bull; %>
+
+        <%#     <span class="icon icon-{{ card.cycle_code }}"></span> %>
+        <%#     <%= card.pack.name %1> %>
+        <%#     <%= card.pack.position %1> %>
+        <%#   </small> %>
+        <%# </div> %>
+      </div>
+    </div>
+  </div>
+</div>

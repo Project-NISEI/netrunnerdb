@@ -1,0 +1,2 @@
+module LegalityTypesHelper
+end

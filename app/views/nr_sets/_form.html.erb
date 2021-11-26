@@ -1,0 +1,33 @@
+<%= form_for(@nr_set) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %>
+
+  <%= f.label :code %>
+  <%= f.text_field :code, size: 5, class: 'form-control' %>
+
+  <%= f.label :cycle %>
+  <%= f.select :cycle_id,
+    options_for_select(
+      Cycle.all.order(:name).map { |s| [s.name, s.id] },
+      selected: @nr_set.cycle&.id),
+      class: 'form-control',
+      include_blank: true
+    %>
+
+  <%= f.label :date_release, "Date Released" %>
+  <%= f.date_field :date_release, class: 'form-control' %>
+
+  <%= f.label :size %>
+  <%= f.number_field :size, class: 'form-control' %>
+
+  <%= f.label :nr_set_type, "Set Type" %>
+  <%= f.select :nr_set_type_id,
+    options_for_select(
+      NrSetType.all.order(:name).map { |s| [s.name, s.id] },
+      selected: @nr_set.nr_set_type&.id),
+      class: 'form-control',
+      include_blank: true
+    %>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

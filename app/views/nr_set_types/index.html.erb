@@ -1,0 +1,17 @@
+<% provide(:title, 'Set Types') %>
+
+<%= will_paginate %>
+
+<table class="rwd-table table table-striped table-condensed">
+   <thead>
+      <tr>
+         <th>Name</th>
+         <th>Description</th>
+      </tr>
+   </thead>
+   <%= render @nr_set_types %>
+</table>
+
+<%= will_paginate %>
+
+<%= link_to 'New Set Type', new_nr_set_type_path %>

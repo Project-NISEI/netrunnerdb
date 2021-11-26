@@ -1,0 +1,42 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  TargetRubyVersion: 2.5
+  CacheRootDirectory: ./tmp/cache
+  Exclude:
+    - 'config/deploy.rb'
+    - 'config/deploy/**/*'
+    - 'db/**/*'
+    - 'vendor/**/*'
+    - 'bin/**/*'
+    - 'node_modules/**/*'
+
+Metrics/LineLength:
+  Max: 88
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
+Naming/PredicateName:
+  Enabled: true
+
+Metrics/BlockLength:
+  Enabled: false

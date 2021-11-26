@@ -1,0 +1,17 @@
+<tr class="<%= cycle('odd', 'even') -%>">
+   <td>
+      <%= link_to card_path(card.code) do %>
+         <span class="icon icon-<%= card.nr_cycle&.code %>"></span>
+         <%= card.name %>
+      <% end %>
+   </td>
+   <td>
+      <%= card.size %>
+   </td>
+   <td>
+      <%= card.date_release %>
+   </td>
+   <td>
+      <%= card.card_type.name %>
+   </td>
+</tr>

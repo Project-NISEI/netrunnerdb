@@ -1,0 +1,13 @@
+<p>
+  <strong>Name:</strong>
+  <%= @nr_cycle.name %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @nr_cycle.code %>
+</p>
+
+<%= link_to 'New', new_nr_cycle_path %> |
+<%= link_to 'Edit', edit_nr_cycle_path(@nr_cycle) %> |
+<%= link_to 'Back', nr_cycles_path %>

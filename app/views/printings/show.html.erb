@@ -1,0 +1,117 @@
+<% provide(:title, @printing.card.name) %>
+
+<div class="col-sm-4">
+  <div class="card-image">
+    <img src=<%= image_path(@printing.nr_set.code, @printing.card.code) %>  class="card" />
+  </div>
+</div>
+
+<div class="col-sm-4">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title card-title">
+        <% if @printing.card.uniqueness %>
+          &diams;
+        <% end %>
+        <span style="font-weight:bold;"><%= @printing.card.name -%></span>
+        <span class="card-cost">
+          <% if @printing.card.advancement_requirement.present? -%>
+            <%= @printing.card.advancement_requirement -%><span class="icon icon-rez"></span>
+            <%= @printing.card.agenda_points -%><span class="icon icon-agenda"></span>
+          <% end -%>
+          <% if @printing.card.cost.present? %>
+            <%= @printing.card.cost -%><span class="icon icon-credit">[credit]</span>
+          <% end -%>
+        </span>
+      </h3>
+    </div>
+
+    <div class="panel-body">
+      <div class="card-info">
+        <div>
+          <%= raw @printing.card.type_builder -%>
+        </div>
+        <div class="card-text border-<%= @printing.card.faction.code.dasherize -%>">
+          <p>
+            <%= raw @printing.card.format_text %>
+          </p>
+        </div>
+        <div class="card-flavor">
+          <small>
+            <p>
+              <%= raw @printing.format_flavor %>
+            </p>
+          </small>
+        </div>
+
+        <div class="card-stats">
+          <%= "Strength: #{@printing.card.strength}" if @printing.card.strength.present? -%>
+          <%= "Trash: #{@printing.card.trash_cost}" if @printing.card.trash_cost.present? -%>
+          <%= "Link: #{@printing.card.base_link}" if @printing.card.base_link.present? -%>
+          <%= "Deck: #{@printing.card.minimum_deck_size}" if @printing.card.minimum_deck_size.present? -%>
+          <%= "Influence: #{@printing.card.influence_limit || raw("&#8734;")}" if @printing.card.influence_limit.present? -%>
+        </div>
+
+        <div class="card-influence">
+          <% if @printing.card.influence_cost.present? %>
+            Influence:
+            <span class="icon icon-<%= @printing.card.faction.code.dasherize %>"></span>
+            <%= raw @printing.card.influence_builder %>
+          <% end %>
+        </div>
+
+        <div class="card-illustrator">
+          <small>
+            Illustrated by <%= @printing.illustrator if @printing.illustrator.present? %>
+          </small>
+        </div>
+      </div>
+
+      <hr>
+      <dl class="card-legality">
+        <% @printing.card.legality.includes(:deck_format, :legality_type).all.each do |ll| %>
+          <div class="card-legality-row">
+            <div class="card-legality-item">
+              <dt><%= ll.deck_format.name %></dt>
+              <dd><%= ll.legality_type.name %></dd>
+            </div>
+          </div>
+        <% end %>
+      </dl>
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-4">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        <%= "#{@printing.nr_set.name} (#{@printing.nr_set.code})" %>
+      </h3>
+      <%= "##{@printing.position}" -%> • <%= link_to "English", @printing.card.code %>
+    </div>
+
+    <div class="panel-body">
+      <table>
+        <thead>
+          <tr>
+            <th>
+              <span>Printings</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @printing.card.versions.each do |printing| %>
+            <tr>
+              <td>
+                <%= link_to printing_path(printing.nr_set.code, printing.position, @printing.card.code) do %>
+                  <span class="icon icon-<%= printing.nr_set.nr_cycle&.code %>"></span> <%= printing.nr_set.name %>
+              <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

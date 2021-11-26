@@ -1,0 +1,17 @@
+<tr class="<%= cycle('odd', 'even') -%>">
+   <td>
+      <%= link_to nr_set_path(nr_set.code) do %>
+         <span class="icon icon-<%= nr_set.nr_cycle&.code %>"></span>
+         <%= nr_set.name %>
+      <% end %>
+   </td>
+   <td>
+      <%= nr_set.size %>
+   </td>
+   <td>
+      <%= nr_set.date_release %>
+   </td>
+   <td>
+      <%= nr_set.nr_set_type.name %>
+   </td>
+</tr>

@@ -1,0 +1,20 @@
+<% provide(:title, 'Cards') %>
+
+<%= will_paginate %>
+
+<table class="rwd-table table table-striped table-condensed">
+   <thead>
+      <tr>
+         <th>Title</th>
+         <th>Faction</th>
+         <th>Cost</th>
+         <th>Type</th>
+         <th title="Strength/Agenda Points/Trash Cost">&hellip;</th>
+         <th>Influence</th>
+         <th>Set</th>
+      </tr>
+   </thead>
+   <%= render @cards %>
+</table>
+
+<%= will_paginate %>

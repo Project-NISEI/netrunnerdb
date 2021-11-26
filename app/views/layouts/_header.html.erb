@@ -1,0 +1,33 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <%= link_to "NetrunnerDB", root_path, id: "logo" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <%= form_tag search_index_path, method: :get, enforce_utf8: false do %>
+            <%= text_field_tag :q, params[:q], placeholder: 'Card Search', class: "navbar-form" %>
+          <% end %>
+        </li>
+        <li><%= link_to 'Sets', nr_sets_path %></li>
+        <% if user_signed_in? %>
+          <%= image_tag gravatar_image_url(current_user.email, filetype: :png, rating: 'pg', secure:false ), size: "30x30", :class => "img-circle" %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Profile", current_user %></li>
+              <li><%= link_to "Settings", edit_user_registration_path %></li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+              </li>
+            </ul>
+          </li>
+        <% else %>
+          <li><%= link_to "Log In or Register", new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>

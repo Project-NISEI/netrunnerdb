@@ -1,5 +1,9 @@
 -# netrunnerdb
 
+This repo is abandoned and was a proof of concept.
+
+https://github.com/netrunnerdb/nrdbv2/ and https://github.com/NetrunnerDB/netrunnerdb-api-server are the new repos.
+
 -v2+ version of netrunnerdb.  Our card database, API and deckbuilding site.
 
 - Set up with Docker
